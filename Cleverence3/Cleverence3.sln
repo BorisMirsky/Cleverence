@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cleverence3", "Cleverence3\Cleverence3.csproj", "{EA726EDE-C8A7-40DF-A650-1A2C455D4EAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA726EDE-C8A7-40DF-A650-1A2C455D4EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA726EDE-C8A7-40DF-A650-1A2C455D4EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA726EDE-C8A7-40DF-A650-1A2C455D4EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA726EDE-C8A7-40DF-A650-1A2C455D4EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1F992B3-8750-4ED6-8102-0270E4866A2B}
+	EndGlobalSection
+EndGlobal
