@@ -1,7 +1,6 @@
-﻿
+﻿using System.Diagnostics;
 
 
-using System.Diagnostics;
 
 public static class MyServer
 {
@@ -43,6 +42,5 @@ public static class MyServer
         });
         Debug.WriteLine(GetCount());
         Debug.WriteLine("Done.");
-        //Console.ReadKey();
     }
 }
