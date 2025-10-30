@@ -8,10 +8,12 @@ public class EncodeDecodeString
     
     public static string Encode(string input)
     {
+
         if (string.IsNullOrEmpty(input))
         {
             return string.Empty;
         }
+
         else if (input.Length == 1)
         {
             return input;
@@ -58,27 +60,27 @@ public class EncodeDecodeString
     public static string Decode(string input)
     {
 
-        string coefficient = String.Empty;
-        StringBuilder sb = new StringBuilder();
+        string temp = String.Empty;
+        StringBuilder decoded = new StringBuilder();
 
         foreach (char current in input)
         {
             if (char.IsDigit(current))
-                coefficient += current;
+                temp += current;
             else
             {
-                if (coefficient == String.Empty)
-                    sb.Append(current);
+                if (temp == String.Empty)
+                    decoded.Append(current);
                 else
                 {
-                    int count = int.Parse(coefficient);
-                    coefficient = String.Empty;
+                    int count = int.Parse(temp);
+                    temp = String.Empty;
                     for (int j = 0; j < count; j++)
-                        sb.Append(current);
+                        decoded.Append(current);
                 }
             }
         }
-        return sb.ToString();
+        return decoded.ToString();
     }
 
     public static void Main(string[] args)

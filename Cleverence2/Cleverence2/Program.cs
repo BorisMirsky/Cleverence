@@ -9,6 +9,7 @@ public static class MyServer
 
     private static ReaderWriterLock locker = new ReaderWriterLock();
 
+    // писатели пишут последовательно
     public static void AddToCount(int value)
     {
         locker.AcquireWriterLock(Timeout.InfiniteTimeSpan);
@@ -16,6 +17,8 @@ public static class MyServer
         locker.ReleaseWriterLock();
     }
 
+    // читатели читают параллельно
+    // если писатели пишут, то читатели ждут
     public static int GetCount()
     {
         locker.AcquireReaderLock(Timeout.InfiniteTimeSpan);
