@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{2D39C1F1-B382-4DFF-82C9-C0D928C32F44}|Cleverence1\\Cleverence1.csproj|c:\\users\\alexander\\source\\cleverence\\cleverence1\\cleverence1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D39C1F1-B382-4DFF-82C9-C0D928C32F44}|Cleverence1\\Cleverence1.csproj|solutionrelative:cleverence1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D39C1F1-B382-4DFF-82C9-C0D928C32F44}|Cleverence1\\Cleverence1.csproj|c:\\users\\alexander\\source\\cleverence\\cleverence1\\cleverence1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D39C1F1-B382-4DFF-82C9-C0D928C32F44}|Cleverence1\\Cleverence1.csproj|solutionrelative:cleverence1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{731DCF92-B2F6-4283-85BB-68BE201538A5}|Cleverence1.Tests\\Cleverence1.Tests.csproj|c:\\users\\alexander\\source\\cleverence\\cleverence1\\cleverence1.tests\\encodedecodestring.tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{731DCF92-B2F6-4283-85BB-68BE201538A5}|Cleverence1.Tests\\Cleverence1.Tests.csproj|solutionrelative:cleverence1.tests\\encodedecodestring.tests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,13 +46,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1\\Class1.cs",
+              "RelativeDocumentMoniker": "Cleverence1\\Class1.cs",
+              "ToolTip": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1\\Class1.cs",
+              "RelativeToolTip": "Cleverence1\\Class1.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAYwF0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T18:32:03.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EncodeDecodeString.Tests.cs",
+              "DocumentMoniker": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1.Tests\\EncodeDecodeString.Tests.cs",
+              "RelativeDocumentMoniker": "Cleverence1.Tests\\EncodeDecodeString.Tests.cs",
+              "ToolTip": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1.Tests\\EncodeDecodeString.Tests.cs",
+              "RelativeToolTip": "Cleverence1.Tests\\EncodeDecodeString.Tests.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T18:14:30.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1\\Program.cs",
               "RelativeDocumentMoniker": "Cleverence1\\Program.cs",
               "ToolTip": "C:\\Users\\Alexander\\source\\Cleverence\\Cleverence1\\Cleverence1\\Program.cs",
               "RelativeToolTip": "Cleverence1\\Program.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAA7wFcAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA0wA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T09:24:24.444Z",
               "EditorCaption": ""

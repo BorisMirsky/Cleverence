@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cleverence1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b8b9f3e26ad9ff324215a5402b2f99ea5a1f97a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d46d555a7c4caf6d1bd3edda555120e142f5cb37")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cleverence1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cleverence1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
