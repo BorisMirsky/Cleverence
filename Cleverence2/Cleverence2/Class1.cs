@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-
+﻿
 
 namespace Cleverence2
 {
@@ -30,17 +29,6 @@ namespace Cleverence2
             {
                 locker.ReleaseReaderLock();
             }
-        }
-
-        public void Handle(int value)
-        {
-            Parallel.For(0, value, i =>
-            {
-            if (i % 3 == 0)
-                AddToCount(3);
-            else
-                Debug.WriteLine(GetCount());
-            });
         }
     }
 }
