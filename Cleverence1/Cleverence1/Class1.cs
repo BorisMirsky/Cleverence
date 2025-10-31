@@ -1,11 +1,27 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
+using System.Diagnostics;
+
 
 
 namespace Cleverence1
 {
     public class EncodeDecode
     {
+
+        public bool StringIsDigits(string input)
+        {
+            bool result = true;
+            foreach (var item in input)
+            {
+                if (char.IsDigit(item))
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
         public string Encode(string input)
         {
 

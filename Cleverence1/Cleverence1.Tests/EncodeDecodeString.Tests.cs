@@ -1,79 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using Cleverence1;
-
+﻿using Xunit;
 
 
 namespace Cleverence1.Tests
 {
-    public class EncodeDecodeStringTests
+    public class EncodeDecodeTests
     {
-        [Theory]
-        [InlineData("qqqwwe")]
-        public void EncodeReturnNotNull(string input)
-        {
-           
+        [Fact]
+        public void ReturnEmptyString()
+        {        
             // Arrange
             EncodeDecode encDec = new();
+            // Act
+            string[] result = encDec.Handle("");
+            // Assert
+            Assert.Equal(["", ""], result);
+        }
 
-            //string input = "qaaabbcccdde";
+        [Fact]
+        public void ReturnOneChar()
+        {
+            // Arrange
+            EncodeDecode encDec = new();
+            // Act
+            string[] result = encDec.Handle("q");
+            // Assert
+            Assert.Equal(["q", "q"], result);
+        }
 
+        [Fact]
+        public void ReturnString()
+        {
+            // Arrange
+            EncodeDecode encDec = new();
             // Act
             string[] result = encDec.Handle("qaaabbcccdde");
-
             // Assert
-            Assert.Equal("Hello world!", result?.ViewData["Message"]);
+            Assert.Equal(["q3a2b3c2de", "qaaabbcccdde"], result);
+        }
 
-
-            if (string.IsNullOrEmpty(input))
-            {
-                return string.Empty;
-            }
-
-            else if (input.Length == 1)
-            {
-                return input;
-            }
-
-            StringBuilder encoded = new StringBuilder();
-            char temp = input[0];
-            int count = 1;
-
-            for (int i = 1; i < input.Length; i++)
-            {
-                if (input[i] == temp)
-                {
-                    count++;
-                }
-                else
-                {
-                    if (count == 1)
-                    {
-                        encoded.Append(temp);
-                        temp = input[i];
-                    }
-                    else
-                    {
-                        encoded.Append(count);
-                        encoded.Append(temp);
-                        temp = input[i];
-                        count = 1;
-                    }
-                }
-            }
-
-            if (count != 1)
-            {
-                encoded.Append(count);
-            }
-            encoded.Append(temp);
-
-            return encoded.ToString();
+        [Fact]
+        public void DetectDigit()
+        {
+            // Arrange
+            EncodeDecode encDec = new();
+            // Act
+            bool result = encDec.StringIsDigits("qaaa5bbcccdde");
+            // Assert
+            Assert.False(result);
         }
     }
 }
