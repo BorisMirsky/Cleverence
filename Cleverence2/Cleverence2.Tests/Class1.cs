@@ -9,11 +9,13 @@ namespace Cleverence2.Tests
         public void ReturnEmptyString()
         {
             // Arrange
-            ReaderWriter encDec = new();
+            ReaderWriter rwLock = new();
             // Act
-            //string[] result = encDec.Handle(1000);
+            rwLock.AddToCount(100);
+            int result = rwLock.count;
+            int result1 = rwLock.GetCount();
             // Assert
-            //Assert.Equal(["", ""], result);
+            Assert.Equal(result, result1);
         }
     }
 }

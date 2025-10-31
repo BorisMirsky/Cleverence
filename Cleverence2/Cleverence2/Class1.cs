@@ -5,12 +5,12 @@ namespace Cleverence2
 {
     public class ReaderWriter
     {
-        private static int count;
+        public int count;
 
-        private static ReaderWriterLock locker = new ReaderWriterLock();
+        private ReaderWriterLock locker = new ReaderWriterLock();
 
         // писатели пишут последовательно
-        public static void AddToCount(int value)
+        public void AddToCount(int value)
         {
             locker.AcquireWriterLock(Timeout.InfiniteTimeSpan);
             count += value;
@@ -36,10 +36,10 @@ namespace Cleverence2
         {
             Parallel.For(0, value, i =>
             {
-                if (i % 2 == 0)
-                    AddToCount(2);
-                else
-                    Debug.WriteLine(GetCount());
+            if (i % 3 == 0)
+                AddToCount(3);
+            else
+                Debug.WriteLine(GetCount());
             });
         }
     }
