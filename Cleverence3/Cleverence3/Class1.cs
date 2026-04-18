@@ -1,119 +1,94 @@
-﻿using System.Globalization;
+﻿using Cleverence3;
+
 
 
 public class PreProcessString
 {
-    public static string[] SplitInputString(string inputString)
+    public ParsedLog? Parse(string line)
     {
-        string[] result = inputString.Split();
-        return result;
-    }
+        if (line.Contains('|'))
+        {
+            string[] parts = line.Split('|');
 
-    public string ProcessDate(string inputString)
-    {
-        DateTime dt;
-        string result = String.Empty;
-        if (DateTime.TryParse(inputString, out dt))
-        {
-            result = dt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            result = "NOVALID";
-        }
-        return result; 
-    }
+            if (parts.Length < 2) return null;
 
-    public static string ProcessTime(string inputString)
-    {
-        if (inputString.EndsWith('|'))
-        {
-            inputString = inputString.TrimEnd('|');
-        }
-        return inputString;
-    }
+            string[] dateTime = parts[0].Trim().Split(' ');
 
-    public string LoggingLevel(string inputString)
-    {
-        string[] values = ["INFORMATION", "INFO", "WARNING", "WARN", "ERROR", "DEBUG"];
-        string result = String.Empty;
-        foreach (string value in values)
-        {
-            if (inputString.Contains(value))
+            string method = parts.Length > 3 ? parts[3].Trim() : "DEFAULT";
+            string message = parts.Length > 4 ? parts[4].Trim() : "";
+
+            return new ParsedLog
             {
-                if (value == "INFORMATION")
-                {
-                    result = "INFO";
-                }
-                else if (value == "WARNING")
-                {
-                    result = "WARN";
-                }
-                else
-                {
-                    result = value;
-                }
-                break;
-            }
-            else
-            {
-                result = "NOVALID";
-            }
+                Date = dateTime.Length > 0 ? dateTime[0] : null,
+                Time = dateTime.Length > 1 ? dateTime[1] : "",
+                Level = NormalizeLevel(parts[1].Trim()),
+                Method = method,
+                Message = message
+            };
         }
-        return result;
+
+        string[] spaces = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (spaces.Length < 3) return null;
+
+        return new ParsedLog
+        {
+            Date = spaces[0],
+            Time = spaces[1],
+            Level = NormalizeLevel(spaces[2]),
+            Method = "DEFAULT",
+            Message = spaces.Length > 3 ? string.Join(" ", spaces, 3, spaces.Length - 3) : ""
+        };
     }
 
-
-    public static string CallingMethod(string inputString)
+    private string NormalizeLevel(string level)
     {
-        string result = String.Empty;
-        if (inputString.Contains('|'))
+        return level switch
         {
-            string[] splitted = inputString.Split('|');
-            result = splitted[2];
-            result = result.TrimEnd('|');
-        }
-        else
-        {
-            result = "DEFAULT";
-        }
-        return result;
+            "INFORMATION" => "INFO",
+            "WARNING" => "WARN",
+            _ => level
+        };
     }
-
 
     public string Handle(string input)
     {
-        string[] splitted = SplitInputString(input);
-        var dateValue = ProcessDate(splitted[0]);
-        string timeValue = ProcessTime(splitted[1]);
-        string logLevel = LoggingLevel(splitted[2]);
-        string callingMethod = CallingMethod(splitted[2]);
-        string message = splitted[^3] + " " + splitted[^2] + " " + splitted[^1];
-        string result = dateValue + '\t' + timeValue + '\t' + logLevel + '\t' + callingMethod + '\t' + message;
-        //
-        var directory = AppContext.BaseDirectory.Split(Path.DirectorySeparatorChar);
-        var slice = new ArraySegment<string>(directory, 0, directory.Length - 4);
-        var path = Path.Combine(slice.ToArray());
-        string fileName = String.Empty;
-        if (result.Contains("NOVALID"))
+        if (string.IsNullOrEmpty(input))
         {
-            fileName = "problems.txt";
+            WriteToFile("problems.txt", input ?? "");
+            return "INVALID";
         }
-        else
+
+        var parsedLog = Parse(input);
+
+        if (parsedLog == null ||
+            string.IsNullOrEmpty(parsedLog.Date) ||
+            string.IsNullOrEmpty(parsedLog.Time) ||
+            string.IsNullOrEmpty(parsedLog.Level))
         {
-            fileName = "result.txt";
+            WriteToFile("problems.txt", input);
+            return "INVALID";
         }
-        string fileNamePath = Path.Combine(path, fileName);
-        using (StreamWriter writer = new StreamWriter(fileNamePath, true))
+
+        if (DateTime.TryParse(parsedLog.Date, out DateTime dt))
         {
-            writer.WriteLine(result);
+            parsedLog.Date = dt.ToString("dd-MM-yyyy");
         }
+
+        string result = $"{parsedLog.Date}\t{parsedLog.Time}\t{parsedLog.Level}\t{parsedLog.Method}\t{parsedLog.Message}";
+        WriteToFile("result.txt", result);
+
         return result;
     }
+
+    private void WriteToFile(string fileName, string content)
+    {
+        string path = AppDomain.CurrentDomain.BaseDirectory;
+        string filePath = Path.Combine(path, fileName);
+
+        using (StreamWriter writer = new StreamWriter(filePath, true))
+        {
+            writer.WriteLine(content);
+        }
+    }
 }
-
-
-
-
-
-
